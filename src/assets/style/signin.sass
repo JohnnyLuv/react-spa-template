@@ -1,0 +1,39 @@
+#signin-wrap
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  width: 100vw
+  height: 100vh
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: -2
+    background: url('https://acg.yanwz.cn/wallpaper/api.php') center no-repeat
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: -1
+    -webkit-backdrop-filter: blur(3px)
+    backdrop-filter: blur(3px)
+
+  .title
+    color: #333
+    font-weight: bold
+    text-align: center
+    margin-bottom: 24px
+    letter-spacing: 4px
+
+  .signin-form
+    background-color: rgba(255, 255, 255, .7)
+    box-shadow: 0 1px 6px rgba(32,33,36,.28)
+    border-radius: 3px
+    padding: 36px 24px 12px

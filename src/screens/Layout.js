@@ -3,6 +3,7 @@ import {
   Switch,
   Route,
   Redirect,
+  useHistory,
 } from 'react-router-dom'
 
 import Home from './Home'
@@ -19,6 +20,13 @@ const { SubMenu } = Menu
 
 
 function Main() {
+  const history = useHistory()
+
+  function signOut() {
+    window.localStorage.clear()
+    history.push('/signin')
+  }
+
   return (
     <Layout>
       <Header id='my-header' mode='horizontal'>
@@ -44,13 +52,13 @@ function Main() {
         <Dropdown overlay={<Menu>
           <Menu.Item icon={<MessageOutlined />}>消息</Menu.Item>
           <Menu.Item icon={<SettingOutlined />}>设置</Menu.Item>
-          <Menu.Item icon={<LogoutOutlined />}>登出</Menu.Item>
+          <Menu.Item icon={<LogoutOutlined />} onClick={signOut}>登出</Menu.Item>
         </Menu>}>
           <div>
             <Badge count={7}>
-              <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf', }}>J</Avatar>
+              <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf', }}>{window.localStorage.getItem('username')?.slice(0, 1).toUpperCase()}</Avatar>
             </Badge>
-            <Button type='link' size='small'>Johnny</Button>
+            <Button type='link' size='small'>{window.localStorage.getItem('username')}</Button>
           </div>
         </Dropdown>
       </Header>
