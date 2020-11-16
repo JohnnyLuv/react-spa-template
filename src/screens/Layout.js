@@ -1,4 +1,13 @@
 import '../assets/style/layout.sass'
+import {
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+
+import Home from './Home'
+import Message from './Message'
+import SignIn from './SignIn'
 
 import { Layout, Menu, Breadcrumb, Badge, Avatar, Button, Dropdown } from 'antd'
 import {
@@ -8,7 +17,8 @@ import {
 const { Header, Content, Footer } = Layout
 const { SubMenu } = Menu
 
-function MyLayout() {
+
+function Main() {
   return (
     <Layout>
       <Header id='my-header' mode='horizontal'>
@@ -51,25 +61,13 @@ function MyLayout() {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <div className='my-body'>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
-          <h1>Content</h1>
+          <Switch>
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/signin' component={SignIn} />
+            <Route exact path='/message' component={Message} />
+            <Redirect exact from='/' to='home' />
+            <Redirect to='/404' />
+          </Switch>
         </div>
       </Content>
       <Footer id='my-footer'>2020 © MicMua TECH</Footer>
@@ -77,4 +75,4 @@ function MyLayout() {
   )
 }
 
-export default MyLayout
+export default Main
